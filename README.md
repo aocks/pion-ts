@@ -62,3 +62,11 @@ the name of the scanner class.
 # Installation
 
 Install via the usual methods (e.g., `pip install pion`).
+
+# Examples
+
+If you want to write your own scanners, see the examples in the
+`pion/simple_scanners` directory. Alternatively, if you want to create
+a semi-stand-alone project which depends on `pion` but provides
+scanners that one could publish to pypi and install with pip, see the
+project in https://github.com/aocks/pion-ts/tree/master/example_extension.
