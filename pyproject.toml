@@ -17,6 +17,13 @@ dependencies = [
     "pandas",   
 ]
 
+[project.urls]
+Homepage = "https://github.com/aocks/pion-ts"
+Documentation = "https://github.com/aocks/pion-ts"
+Repository = "https://github.com/aocks/pion-ts.git"
+Issues = "https://github.com/aocks/pion-ts/issues"
+
+
 [project.optional-dependencies]
 dev = [
     "pytest",
