@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pion"
+version = "0.2.0"
+description = "A Python project for time series data and databases."
+authors = [
+    { name = "Your Name", email = "emin@aocks.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+dependencies = [
+    # List your dependencies here, e.g.
+    "requests",
+    "numpy",
+    "pandas",   
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pylint",
+]
+
+
+[tool.setuptools]
+# If there are data files included in your packages that need to be
+# installed, specify them here.
+package-data = { "sample" = ["*.dat"] }
+

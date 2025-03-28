@@ -1,0 +1,55 @@
+
+# Introduction
+
+This project provides a basic interface and tools for downloading
+time series data (and possibly storing them in a database).
+
+The motivation is that there are lots of different sites which allow
+you to download data but they all have different formats, conventions,
+and so on.
+
+Instead of everyone having to learn the details of each sites download
+API, wouldn't it be nice if there was a reasonably standardized approach?
+
+For example, imagine you want to get the effective Federal Funds Rate
+from the Federal Reserve Bank of St. Louis (FRED) and you want to
+get the CPI from the Bureau of Labor Statistics (BLS). Using pion,
+you can do something like the following:
+
+```
+>>> from pion.simple_scanners.fred import Scanner as FREDScanner
+>>> scnr = FREDScanner()
+>>> dff_result = scnr.get_data('DFF', ['close'], '2000-01-01', '2000-01-06')
+>>> print(dff_result[['close']])  # doctest: +NORMALIZE_WHITESPACE
+            close
+event_date
+2000-01-01   3.99
+2000-01-02   3.99
+2000-01-03   5.43
+2000-01-04   5.38
+2000-01-05   5.41
+2000-01-06   5.54
+
+>>> from pion.simple_scanners.bls import Scanner as BLSScanner
+>>> scnr = BLSScanner()
+>>> data = scnr.get_data('CUUR0000SA0',  # series is CPI-U
+...                     ['value'], '2011-01-01', end_date='2020-01-01')
+>>> print(data)  # doctest: +ELLIPSIS
+              value
+2020-12-01  260.474
+2020-11-01  260.229
+2020-10-01  260.388
+2020-09-01  260.280
+2020-08-01  259.918
+...
+
+```
+
+In both examples above, you simply import the Scanner class for the
+desired data feed and call the `get_data` method in a consistent way
+(pass the key specifying the data series you want, the fields you
+want, and the dates).
+
+# Installation
+
+Install via the usual methods (e.g., `pip install pion`).
