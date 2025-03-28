@@ -95,7 +95,12 @@ See docs for the `_regr_test` method for example usage.
 
     @staticmethod
     def _regr_test():
-        """
+        """Example usage and regression test.
+
+NOTE:  You will need an API key for FRED. You can either put that in
+       the environment variable FRED_API_KEY or in ~/.FRED_API_KEY
+       or pass it in to `__init__`.
+        
 >>> from pion.simple_scanners.fred import Scanner
 >>> scnr = Scanner()
 >>> dff_result = scnr.get_data('DFF', ['close'], '2000-01-01', '2000-01-06')

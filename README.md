@@ -50,6 +50,15 @@ desired data feed and call the `get_data` method in a consistent way
 (pass the key specifying the data series you want, the fields you
 want, and the dates).
 
+## API Keys
+
+Some scanners will require API keys (e.g., FRED) and others may need
+API keys if you want to do more than a few requests (e.g., BLS). In
+general, you can either pass API keys in to `__init__` for the scanner
+or provide in an environemnt variable with a name like
+`{NAME}_API_KEY` or in the file `~/.{NAME}_API_KEY` where `{NAME}` is
+the name of the scanner class.
+
 # Installation
 
 Install via the usual methods (e.g., `pip install pion`).

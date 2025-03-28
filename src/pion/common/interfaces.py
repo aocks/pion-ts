@@ -92,6 +92,12 @@ to work with pion writers.
 
     def get_api_key(self):
         """Get API key from env var or file.
+
+Sub-classes can call this to lookup the API key that was passed in
+to `__init__` or try to find it from an environemnt variable with
+a name like `{NAME}_API_KEY` or from the file `~/.{NAME}_API_KEY`
+where `{NAME}` is the name of the scanner class.
+        
         """
         if not self.api_key:
             evar = os.environ.get(f'{self.scanner_name}_API_KEY', None)

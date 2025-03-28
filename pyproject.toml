@@ -7,12 +7,11 @@ name = "pion"
 version = "0.2.0"
 description = "A Python project for time series data and databases."
 authors = [
-    { name = "Your Name", email = "emin@aocks.com" }
+    { name = "Emin Martinian", email = "emin@aocks.com" }
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
 dependencies = [
-    # List your dependencies here, e.g.
     "requests",
     "numpy",
     "pandas",   

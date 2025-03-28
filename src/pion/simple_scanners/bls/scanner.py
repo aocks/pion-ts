@@ -9,6 +9,7 @@ import requests
 
 from pion.common import interfaces
 
+
 class Scanner(interfaces.Scanner):
     """Scanner for Bureau of Labor Statistics (BLS).
     """
@@ -19,7 +20,7 @@ class Scanner(interfaces.Scanner):
     def get_valid_fields(cls) -> typing.List[str]:
         "Return list of valid fields for this scanner."
 
-        return ['close']
+        return ['value']
 
     def get_header(self) -> typing.Dict[str, str]:
         """Get headers for web request
