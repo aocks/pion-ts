@@ -33,13 +33,13 @@ check:  ## Run linting, tests, etc.
 clean:  ## Clean out generated files.
 	\rm -rf dist *.egg-info src/*.egg-info
 
-test_pypi:
+test_pypi:  check dist  ## Test pypi upload
 	python3 -m twine upload --verbose --repository testpypi dist/*
 
-pypi:   dist
+pypi:   check dist  ## Upload to pypi
 	python3 -m twine upload --verbose dist/*
 
-dist:
+dist:   ## Build distribution
 	python3 -m build 
 
 
