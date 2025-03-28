@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pion-ts"
+version = "0.1.0"
+description = "Example extension for pion time series downloader."
+authors = [
+    { name = "Emin Martinian", email = "emin@aocks.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+dependencies = [
+    "requests",
+    "numpy",
+    "pandas",
+    "pion"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pylint",
+]
+
+
+[tool.setuptools]
+# If there are data files included in your packages that need to be
+# installed, specify them here.
+package-data = { "sample" = ["*.dat"] }
+
