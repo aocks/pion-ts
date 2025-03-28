@@ -68,9 +68,7 @@ See docs for the `_regr_test` method for example usage.
                   'file_type': 'json'}
         url = f'{self.base_url}/series/observations'
         req = requests.get(url, params=params, timeout=self.timeout)
-        if req.status_code != 200:
-            raise ValueError(f'Bad status {req.status_code}; reason: ' +
-                             str(getattr(req, 'reason', 'unknown')))
+        self.raise_if_non_200(req)
         jdata = req.json()
         frame = pandas.DataFrame(jdata['observations'])[
             ['date', 'value']].rename(columns={

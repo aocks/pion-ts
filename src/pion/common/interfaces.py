@@ -97,7 +97,7 @@ Sub-classes can call this to lookup the API key that was passed in
 to `__init__` or try to find it from an environemnt variable with
 a name like `{NAME}_API_KEY` or from the file `~/.{NAME}_API_KEY`
 where `{NAME}` is the name of the scanner class.
-        
+
         """
         if not self.api_key:
             evar = os.environ.get(f'{self.scanner_name}_API_KEY', None)
@@ -110,3 +110,10 @@ where `{NAME}` is the name of the scanner class.
                     self.api_key = fdesc.read().strip()
                     LOGGER.info('Read API key from %s', fname)
         return self.api_key
+
+    def raise_if_non_200(self, req):
+        """Raise error if request response does not have code 200
+        """
+        if req.status_code != 200:
+            raise ValueError(f'Bad status {req.status_code}; reason: ' +
+                             str(getattr(req, 'reason', 'unknown')))
