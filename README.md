@@ -17,18 +17,6 @@ get the CPI from the Bureau of Labor Statistics (BLS). Using pion,
 you can do something like the following:
 
 ```
->>> from pion.simple_scanners.fred import Scanner as FREDScanner
->>> scnr = FREDScanner()
->>> dff_result = scnr.get_data('DFF', ['close'], '2000-01-01', '2000-01-06')
->>> print(dff_result[['close']])  # doctest: +NORMALIZE_WHITESPACE
-            close
-event_date
-2000-01-01   3.99
-2000-01-02   3.99
-2000-01-03   5.43
-2000-01-04   5.38
-2000-01-05   5.41
-2000-01-06   5.54
 
 >>> from pion.simple_scanners.bls import Scanner as BLSScanner
 >>> scnr = BLSScanner()
@@ -42,6 +30,29 @@ event_date
 2020-09-01  260.280
 2020-08-01  259.918
 ...
+
+```
+
+Similiarly, if you want to use FRED you can do something in the same
+way but just using a different scanner even though FRED uses different
+formats, requires an API key, etc.:
+
+```
+
+>>> import os
+>>> api_key = open(os.path.expanduser('~/.FRED_API_KEY')).read().strip()
+>>> from pion.simple_scanners.fred import Scanner as FREDScanner
+>>> scnr = FREDScanner(api_key=api_key)
+>>> dff_result = scnr.get_data('DFF', ['close'], '2000-01-01', '2000-01-06')
+>>> print(dff_result[['close']])  # doctest: +NORMALIZE_WHITESPACE
+            close
+event_date
+2000-01-01   3.99
+2000-01-02   3.99
+2000-01-03   5.43
+2000-01-04   5.38
+2000-01-05   5.41
+2000-01-06   5.54
 
 ```
 
